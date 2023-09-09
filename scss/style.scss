@@ -1,3 +1,8 @@
+@use 'btnConfig';
+@use 'config';
+@use "utilities";
+
+
 
 * {
   box-sizing: border-box;
@@ -6,8 +11,8 @@
 }
 
 body {
-  background-color: $light-color;
-  font-family: $font-stack;
+  background-color: config.$light-color;
+  font-family: config.$font-stack;
   line-height: 1;
 }
 
@@ -19,7 +24,32 @@ a {
   text-decoration: none;
 }
 
+
+
 .hero {
+  nav {
+    & {
+      @include utilities.set-bg(config.$primary-color);
+      display:flex;
+    }
+    h1 {
+      display: inline-block;
+      flex-grow:1;
+    }
+    ul {
+      flex-grow:1;
+      display:flex;
+    }
+    li {
+      & {
+      display: inline-block;
+      flex-grow:1;
+      }
+      a {
+        color:white;
+      }
+    }
+  }
   // This is where the bulk of the SCSS styling needs to be done
 
   // Take a look at the other files we've built already. How can they be useful here?
@@ -28,6 +58,24 @@ a {
   // 1. $variables
   // 2. nesting (dont forget about the ampersand (&) parent selector!)
   // 3. At-Rules
+  & {
+    @include utilities.set-bg(config.$primary-color)
+  }
+  .hero-content {
+    & {
+      display:flex;
+      align-items:center;
+    }
+    div {
+      flex-grow:1;
+    }
+    img {
+      flex-grow:1;
+      max-width:50%;
+    }
+
+
+  }
 }
 
 // This code is related to some of the aspects of SCSS we have yet to cover.
